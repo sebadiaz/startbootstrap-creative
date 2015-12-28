@@ -177,8 +177,9 @@ header {
     width: 100%;
     min-height: auto;
     text-align: center;
-    color: #fff;
-    background-image: url(../img/chabal2.jpg);
+    color: #FFF ;
+    text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;
+    background-image: url(../img/chabal3.jpg);
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
