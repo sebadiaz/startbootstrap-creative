@@ -1,3 +1,4 @@
+var mongoose = require('mongoose');
 var userSchema = new mongoose.Schema({
          active: Boolean,
          email: { type: String, trim: true, lowercase: true },
@@ -36,7 +37,7 @@ var eventSchema = new mongoose.Schema({
 
 
  
-var EventModel = mongoose.model( 'Event', feedSchema );
+var EventModel = mongoose.model( 'Event', eventSchema );
 
 
 exports.addAPIRouter = function(app, mongoose, stormpath) {
@@ -59,27 +60,6 @@ exports.addAPIRouter = function(app, mongoose, stormpath) {
  	});
 }
 
-var router = express.Router();
- 	
- 	router.post('/user/enroll', function(req, res) {
- 		logger.debug('Router for /user/enroll');
 
-        var kitty = new UserModel({ name: req.body.username});
-        kitty.save(function (err) {
-        if (err) // ...
-            console.log('meow');
-        });
+  	
 
- 	}
- 	router.get('/events', stormpath.apiAuthenticationRequired, function(req, res) {
- 		logger.debug('Router for /events');
-        EventModel.find({}, function (err, users) {
-            res.send(users);
-        });
- 	}
- 	router.put('/feeds/subscribe', 
- 			  stormpath.apiAuthenticationRequired, function(req, res) {
- 		logger.debug('Router for /feeds');
- 	}
-  	app.use('/api/v1.0', router);
-}
